@@ -12,7 +12,7 @@ class Menu extends MY_Model {
 	function __construct()
 	{
 		//*** Explicitly load the REST libraries. 
-		$this->load->library(['curl', 'format', 'rest']);
+		$this->load->library(['curl', 'format', 'rest']);		
 		parent::__construct();
 	}
 
@@ -58,7 +58,11 @@ class Menu extends MY_Model {
 	        $this->rest->initialize(array('server' => REST_SERVER));
 	        $this->rest->option(CURLOPT_PORT, REST_PORT);
 	        $result = $this->rest->get('/maintenance/item/id/' . $key);
-	        return ! empty($result);
+	        //return ! empty($result);
+	        if(isset($result->error))
+	        	return false;
+	        else
+	        	return true;
 	}
 
 	// Update a record in the DB
