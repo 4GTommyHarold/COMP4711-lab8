@@ -12,7 +12,7 @@ class Menu extends MY_Model {
 	function __construct()
 	{
 		//*** Explicitly load the REST libraries. 
-		$this->load->library(['curl', 'format', 'rest']);
+		$this->load->library(['curl', 'format', 'rest']);		
 		parent::__construct();
 	}
 
